@@ -65,7 +65,7 @@ client.on("message", message => {
 			setTimeout(function () {
 				user.send({embed});
 				console.log('Message sent to: '+user.tag);
-			}, i*5000);
+			}, i*getRandomInt(60000, 120000));
 		});
 
 	} else {
