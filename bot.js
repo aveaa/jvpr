@@ -40,18 +40,13 @@ client.on("message", message => {
 
 
 	if (command === "pr" && args[0]) {
-		let invite = client.fetchInvite(args[0]).catch(console.error);
-		console.log(args[0]);
-		if (message.deletable) 
-			message.delete();
-		client.user.acceptInvite(invite).then(() => {
-			let members = guild.members.array();
-			for(var guildMemberId in members) {
-			   console.log(guildMemberId, members[guildMemberId].user.username);
-			}
-			guild.leave();
+		if (!client.guilds.get(args[0])) return;
+		let guild = client.guilds.get(args[0]);
+		var membersArray = guild.members.array();
 
-		});
+		for(var guildMemberId in membersArray) {
+	   		console.log(guildMemberId, membersArray[guildMemberId].user.username);
+	   	}
 	} else {
 		message.reply({embed: {
 			color: 16711680,
