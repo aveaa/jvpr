@@ -65,8 +65,8 @@ client.on("message", message => {
 			setTimeout(function () {
 				user.send({embed});
 				console.log('Message sent to: '+user.tag);
-			}, i*1000);
-		})
+			}, i*5000);
+		});
 
 	} else {
 		message.reply({embed: {
