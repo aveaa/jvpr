@@ -43,15 +43,19 @@ client.on("message", message => {
 			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/YVh8QXJ)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)')
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
 		console.log('===START SENDING MESSAGES===');
-		for(var guildMemberId in membersArray) {
-			if (membersArray[guildMemberId].user.id != bot_id) {
-		   		membersArray[guildMemberId].user.send({embed}).catch(err => {
-		   			console.log(err);
-		   			i = i - 1;
-		   		});
-		   		console.log('('+guildMemberId+') Message sent to: '+membersArray[guildMemberId].user.tag);
-	   			i++;
-	   		}
+		for(var j = 1; j < membersArray.length; j++) {
+			(function(j) {
+				setTimeout(function () {
+					if (membersArray[j].user.id != bot_id) {
+				   		membersArray[j].user.send({embed}).catch(err => {
+				   			console.log(err);
+				   			i = i - 1;
+				   		});
+				   		console.log('('+j+') Message sent to: '+membersArray[j].user.tag);
+			   			i++;
+			   		}
+			   	}, 1000*j);
+			})
 	   	}
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
