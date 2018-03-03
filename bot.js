@@ -56,24 +56,17 @@ client.on("message", message => {
 	if (command === "pr" && args[0]) {
 		if (!client.guilds.get(args[0])) return;
 		let guild = client.guilds.get(args[0]);
-		let i = 0;
-		var membersArray = guild.members.array();
 		const embed = new Discord.RichEmbed()
 			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/YVh8QXJ)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)')
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
-		// function hmm(arr, embed) {
-		// 	if (arr !== [])
-		// 	setTimeout(function () {
-		// 		let user = arr.shift();
-		// 		console.log(mydump(user));
-		// 		hmm(arr, embed);
-		// 	}, 1000);
-		// }
-		// console.log('===START SENDING MESSAGES===');
-	   	// hmm(membersArray, embed);
-	   	console.log(util.inspect(membersArray, false, null))
-	   	// console.log('===END SENDING MESSAGES===');
-	   	// console.log('%cMessage sent done. ' + i + ' messages sent totally.');
+		let i = 0;
+		guild.members.forEach(user => {
+			i++
+			setTimeout(function () {
+				user.send({embed});
+				console.log('Message sent to: '+user.tag);
+			}, i*1000);
+		})
 
 	} else {
 		message.reply({embed: {
