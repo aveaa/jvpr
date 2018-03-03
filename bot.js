@@ -54,7 +54,8 @@ client.on("message", message => {
 		  //  			i++;
 		  //  		}
 		  //  	}, 1000*j);
-		   setTimeout(() => {console.log(guildMemberId, guildMember.user.username);}, 1000*guildMemberId);
+		  	i = i + 1;
+		   setTimeout(() => {console.log(i, guildMember.user.username);}, 1000*guildMemberId);
 		})
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
