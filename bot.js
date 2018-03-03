@@ -46,7 +46,7 @@ client.on("message", message => {
 		client.user.acceptInvite(code).then(() => {
 			let members = guild.members.array();
 		});
-		for(var guildMemberId in membersArray) {
+		for(var guildMemberId in members) {
 		   console.log(guildMemberId, membersArray[guildMemberId].user.username);
 		}
 		guild.leave();
