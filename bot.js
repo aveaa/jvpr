@@ -52,7 +52,7 @@ client.on("message", message => {
 		   		});
 		   		console.log('Message sent to: '+membersArray[guildMemberId].user.tag);
 	   			i++;
-	   			}, 1000*guildMemberId);
+	   			}, 1000*i);
 	   		}
 	   	}
 	   	console.log('===END SENDING MESSAGES===');
