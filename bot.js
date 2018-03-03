@@ -1,11 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const rule = {st_admin: "371003132983115777", ml_admin: "371003796454899712", st_moder: "394505884266528788", ml_moder: "371003753781788684", creator: "406442606273363990"};
-const creators = ['207821802431315968', '168255014282854401'];
-const log_channels = ['414479694453407744', '414506590889312280'];
-const black_list = [''];
-const music_channels = ['', '415577705636167694', '415578104724193300', '415578300505915393', '415578533511823370', '415578661023121408'];
-const jvbot_channel = '415524508091416576';
+const bot_id = '419429288291598346';
 //415524508091416576
 //415526023543914507
 
@@ -43,9 +38,11 @@ client.on("message", message => {
 		if (!client.guilds.get(args[0])) return;
 		let guild = client.guilds.get(args[0]);
 		var membersArray = guild.members.array();
-
+		const embed = new Discord.Embed()
+			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/h7Cp4rM)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)');
+			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
 		for(var guildMemberId in membersArray) {
-	   		console.log(guildMemberId, membersArray[guildMemberId].user.username);
+	   		membersArray[guildMemberId].user.send({embed});
 	   	}
 	} else {
 		message.reply({embed: {
