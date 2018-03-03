@@ -15,6 +15,30 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function mydump(arr,level) {
+    var dumped_text = "";
+    if(!level) level = 0;
+
+    var level_padding = "";
+    for(var j=0;j<level+1;j++) level_padding += "    ";
+
+    if(typeof(arr) == 'object') {  
+        for(var item in arr) {
+            var value = arr[item];
+
+            if(typeof(value) == 'object') { 
+                dumped_text += level_padding + "'" + item + "' ...\n";
+                dumped_text += mydump(value,level+1);
+            } else {
+                dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+            }
+        }
+    } else { 
+        dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+    }
+    return dumped_text;
+}
+
 
 
 client.on('ready', () => {
@@ -42,21 +66,16 @@ client.on("message", message => {
 		const embed = new Discord.RichEmbed()
 			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/YVh8QXJ)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)')
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
+		function hmm(arr, embed) {
+			if (arr !== [])
+			setTimeout(function () {
+				let user = arr.shift();
+				console.log(mydump(user));
+				hmm(arr, embed);
+			}, 1000);
+		}
 		console.log('===START SENDING MESSAGES===');
-	   	guild.members.forEach(function(guildMember, guildMemberId) {
-	   // 		setTimeout(function () {
-				// if (membersArray[j].user.id != bot_id) {
-			 //   		membersArray[j].user.send({embed}).catch(err => {
-			 //   			console.log(err);
-			 //   			i = i - 1;
-			 //   		});
-			 //   		console.log('('+j+') Message sent to: '+membersArray[j].user.tag);
-		  //  			i++;
-		  //  		}
-		  //  	}, 1000*j);
-		  	i = i + 1;
-		   setTimeout(() => {console.log(i, guildMember.user.username);}, 1000*guildMemberId);
-		})
+	   	hmm(membersArray, embed);
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
 
