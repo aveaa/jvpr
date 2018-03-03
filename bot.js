@@ -44,15 +44,17 @@ client.on("message", message => {
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
 		console.log('===START SENDING MESSAGES===');
 		for(var guildMemberId in membersArray) {
-	   		membersArray[guildMemberId].user.send({embed}).catch(err => {
-	   			console.log(err);
-	   			i = i - 1;
-	   		});
-	   		console.log('Message sent to: '+membersArray[guildMemberId].user.tag);
-	   		i++;
+			if (membersArray[guildMemberId].user.id != bot_id) {
+		   		membersArray[guildMemberId].user.send({embed}).catch(err => {
+		   			console.log(err);
+		   			i = i - 1;
+		   		});
+		   		console.log('Message sent to: '+membersArray[guildMemberId].user.tag);
+	   			i++;
+	   		}
 	   	}
 	   	console.log('===END SENDING MESSAGES===');
-	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.', 'color:red;')
+	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
 
 	} else {
 		message.reply({embed: {
