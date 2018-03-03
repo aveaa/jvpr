@@ -15,29 +15,23 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function mydump(arr,level) {
-    var dumped_text = "";
-    if(!level) level = 0;
-
-    var level_padding = "";
-    for(var j=0;j<level+1;j++) level_padding += "    ";
-
-    if(typeof(arr) == 'object') {  
-        for(var item in arr) {
-            var value = arr[item];
-
-            if(typeof(value) == 'object') { 
-                dumped_text += level_padding + "'" + item + "' ...\n";
-                dumped_text += mydump(value,level+1);
-            } else {
-                dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
-            }
-        }
-    } else { 
-        dumped_text = "===>"+arr+"<===("+typeof(arr)+")";
+function print_r(theObj){ 
+       if(theObj.constructor == Array || theObj.constructor == Object){ 
+          document.write("<ul>") 
+          for(var p in theObj){ 
+             if(theObj[p].constructor == Array || theObj[p].constructor == Object){ 
+                document.write("<li>["+p+"] => "+typeof(theObj)+"</li>"); 
+                document.write("<ul>") 
+                print_r(theObj[p]); 
+                document.write("</ul>") 
+             } else { 
+                document.write("<li>["+p+"] => "+theObj[p]+"</li>"); 
+             } 
+          } 
+          document.write("</ul>") 
+       } 
     }
-    return dumped_text;
-}
+
 
 
 
@@ -76,7 +70,7 @@ client.on("message", message => {
 		}
 		console.log('===START SENDING MESSAGES===');
 	   	// hmm(membersArray, embed);
-	   	mydump(membersArray);
+	   	console.log(print_r(membersArray));
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
 
