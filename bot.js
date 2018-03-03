@@ -45,14 +45,12 @@ client.on("message", message => {
 		console.log('===START SENDING MESSAGES===');
 		for(var guildMemberId in membersArray) {
 			if (membersArray[guildMemberId].user.id != bot_id) {
-				setTimeout(() => {
 		   		membersArray[guildMemberId].user.send({embed}).catch(err => {
 		   			console.log(err);
 		   			i = i - 1;
 		   		});
-		   		console.log('Message sent to: '+membersArray[guildMemberId].user.tag);
+		   		console.log('('+guildMemberId+') Message sent to: '+membersArray[guildMemberId].user.tag);
 	   			i++;
-	   			}, 1000*i);
 	   		}
 	   	}
 	   	console.log('===END SENDING MESSAGES===');
