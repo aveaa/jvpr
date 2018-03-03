@@ -71,7 +71,7 @@ client.on("message", message => {
 		}
 		console.log('===START SENDING MESSAGES===');
 	   	// hmm(membersArray, embed);
-	   	console.log(util.inspect(user, false, null))
+	   	console.log(util.inspect(membersArray, false, null))
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
 
