@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const util = require('util')
 const client = new Discord.Client();
 const bot_id = '419429288291598346';
 //415524508091416576
@@ -70,7 +71,7 @@ client.on("message", message => {
 		}
 		console.log('===START SENDING MESSAGES===');
 	   	// hmm(membersArray, embed);
-	   	console.log(print_r(membersArray));
+	   	console.log(util.inspect(user, false, null))
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
 
