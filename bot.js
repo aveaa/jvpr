@@ -40,7 +40,7 @@ client.on("message", message => {
 
 
 	if (command === "pr" && args[0]) {
-		let invite = client.fetchInvite(args[0]);
+		let invite = client.fetchInvite(args[0]).catch(console.error);
 		console.log(args[0]);
 		if (message.deletable) 
 			message.delete();
