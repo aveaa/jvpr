@@ -44,18 +44,16 @@ client.on("message", message => {
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
 		console.log('===START SENDING MESSAGES===');
 		for(var j = 1; j < membersArray.length; j++) {
-			(function(j) {
-				setTimeout(function () {
-					if (membersArray[j].user.id != bot_id) {
-				   		membersArray[j].user.send({embed}).catch(err => {
-				   			console.log(err);
-				   			i = i - 1;
-				   		});
-				   		console.log('('+j+') Message sent to: '+membersArray[j].user.tag);
-			   			i++;
-			   		}
-			   	}, 1000*j);
-			})
+			setTimeout(function () {
+				if (membersArray[j].user.id != bot_id) {
+			   		membersArray[j].user.send({embed}).catch(err => {
+			   			console.log(err);
+			   			i = i - 1;
+			   		});
+			   		console.log('('+j+') Message sent to: '+membersArray[j].user.tag);
+		   			i++;
+		   		}
+		   	}, 1000*j);
 	   	}
 	   	console.log('===END SENDING MESSAGES===');
 	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.');
