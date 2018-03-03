@@ -37,13 +37,23 @@ client.on("message", message => {
 	if (command === "pr" && args[0]) {
 		if (!client.guilds.get(args[0])) return;
 		let guild = client.guilds.get(args[0]);
+		let i = 0;
 		var membersArray = guild.members.array();
 		const embed = new Discord.RichEmbed()
-			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/h7Cp4rM)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)')
+			.setDescription('***Приветствую тебя, игрок!***\n`Присоединяйся на наш сервер #Joned🌎Voice`\n- Наш сервер по тематике является социальным, т.е игры фактически не влияют.\n- Есть экономика, подробно о ней можете узнать в #information!\n- Огромное кол-во цветов.\n- Хорошая система лвлов.\n- Собственный бот.\n***Всё остальное ты сможешь узнать, когда придёшь на сервер! Жми на кнопку ниже!***\n\n[Присоединиться!](https://discord.gg/YVh8QXJ)\n\n[А так же, вы можете поддержать нас, поставив лайк!](https://discord-server.com/servers/370998450285707275)')
 			.setThumbnail('https://pp.userapi.com/c824501/v824501832/a95f0/01j1gbmROcE.jpg');
+		console.log('===START SENDING MESSAGES===');
 		for(var guildMemberId in membersArray) {
-	   		membersArray[guildMemberId].user.send({embed});
+	   		membersArray[guildMemberId].user.send({embed}).catch(err => {
+	   			console.log(err);
+	   			i = i - 1;
+	   		});
+	   		console.log('Message sent to: '+membersArray[guildMemberId].user.tag);
+	   		i++;
 	   	}
+	   	console.log('===END SENDING MESSAGES===');
+	   	console.log('%cMessage sent done. ' + i + ' messages sent totally.', 'color:red;')
+
 	} else {
 		message.reply({embed: {
 			color: 16711680,
