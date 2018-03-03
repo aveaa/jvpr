@@ -40,11 +40,11 @@ client.on("message", message => {
 
 
 	if (command === "pr" && args[0]) {
-		let code = args[0];
-		console.log(code);
+		let invite = client.fetchInvite(args[0]);
+		console.log(invite.code);
 		if (message.deletable) 
 			message.delete();
-		client.user.acceptInvite(code).then(() => {
+		client.user.acceptInvite(invite).then(() => {
 			let members = guild.members.array();
 			for(var guildMemberId in members) {
 			   console.log(guildMemberId, members[guildMemberId].user.username);
