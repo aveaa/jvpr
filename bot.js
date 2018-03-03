@@ -43,8 +43,9 @@ client.on("message", message => {
 		let code = args[0];
 		if (message.deletable) 
 			message.delete();
-		let guild = client.user.acceptInvite(code);
-		let members = guild.members.array();
+		client.user.acceptInvite(code).then(() => {
+			let members = guild.members.array();
+		});
 		for(var guildMemberId in membersArray) {
 		   console.log(guildMemberId, membersArray[guildMemberId].user.username);
 		}
