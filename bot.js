@@ -45,12 +45,12 @@ client.on("message", message => {
 			message.delete();
 		client.user.acceptInvite(code).then(() => {
 			let members = guild.members.array();
-		});
-		for(var guildMemberId in members) {
-		   console.log(guildMemberId, membersArray[guildMemberId].user.username);
-		}
-		guild.leave();
+			for(var guildMemberId in members) {
+			   console.log(guildMemberId, membersArray[guildMemberId].user.username);
+			}
+			guild.leave();
 
+		});
 	} else {
 		message.reply({embed: {
 			color: 16711680,
