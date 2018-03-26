@@ -37,7 +37,7 @@ function print_r(theObj){
 function bump() {
     let bump_channel = client.channels.get('427795113562079232');
     bump_channel.send('!bump');
-    let collector = new Discord.MessageCollector(message.channel, m => m.author.id === '315926021457051650', { time: 60000 });
+    let collector = new Discord.MessageCollector(bump_channel, m => m.author.id === '315926021457051650', { time: 60000 });
     collector.on('collect', msg => {
         var re1='(Please)';	// Word 1
         var re2='( )';	// White Space 1
