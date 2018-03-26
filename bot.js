@@ -117,7 +117,7 @@ client.on('ready', () => {
 	console.log('Bot loaded');
     /** @namespace process.env.PREFIX */
     client.user.setPresence({ game: { name: `твои крики`, type: 2 } }).catch(o_O=>{});
-    
+    bump();
 
 });
 
