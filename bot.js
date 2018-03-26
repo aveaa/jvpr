@@ -109,8 +109,6 @@ function bump() {
         }
         collector.stop();
     });
-
-    collector.stop();
 }
 
 client.on('ready', () => {
