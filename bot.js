@@ -103,13 +103,13 @@ function bump() {
                 var int1=m[15];
                 var int2=m[19];
                 var int3=m[23];
+                console.log(`${int1}, ${int2}, ${int3}`);
                 setTimeout(bump, (int1*3600000)+(int2*60000)+(int3*1000)+5000);
             }
         }
         collector.stop();
     });
 
-    console.log(collector);
     collector.stop();
 }
 
