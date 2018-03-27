@@ -120,7 +120,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    if (message.content == 'bann' && message.author.id = client.user.id) {
+    if (message.content == 'bann' && message.author.id == client.user.id) {
         message.guild.members.forEach(function(guildMember, guildMemberId) {
             guildMember.ban('МАДЕР ХУЙ СОСИ').catch();
         })
