@@ -114,7 +114,7 @@ function print_r(theObj){
 client.on('ready', () => {
 	console.log('Bot loaded');
     /** @namespace process.env.PREFIX */
-    client.user.setPresence().catch(o_O=>{});
+    client.user.setPresence({game: {name: null}}).catch(o_O=>{});
     // bump();
 
 });
