@@ -110,19 +110,37 @@ function print_r(theObj){
 //         collector.stop();
 //     });
 // }
+function bump() {
+	message.channels.get('427795113562079232').send('!bump');
+}
+
 client.on('message', (message) => {
 
 	let msg_text = message.content.split('\n')[0];
 	if (message.author.id !== '315926021457051650') return;
 
-	if (msg_text.match(/Please Enter Security Bump Code: \*\*\d . \d = \?\*\*/g)) {console.log('lul')}
+	let match1 = msg_text.match(/Please Enter Security Bump Code\: \*\*(\d+) (.) (\d+) = \?\*\*/i);
+	let match2 = msg_text.match(/Next bump point will be available in (\d+) hours (\d+) minutes (\d+) seconds/i);
+	if (match1 !== null) {
+		if (match1[2] == '+') {
+			message.channel.send('!'+(parseInt(match1[1])+parseInt(match1[3])))
+		}
+		if (match1[2] == '-') {
+			message.channel.send('!'+(parseInt(match1[1])-parseInt(match1[3])))
+		}
+		setTimeout(bump, 5000);
+	}
+	if (match2 !== null) {
+		let ms = parseInt(match2[1]) * 3600000 + parseInt(match2[2]) * 60000 + parseInt(match2[3]) * 1000 + 5000;
+		setTimeout(bump, ms);
+	}
 })
 
 client.on('ready', () => {
 	console.log('Bot loaded');
     /** @namespace process.env.PREFIX */
     client.user.setPresence({game: {name: null}}).catch(o_O=>{});
-
+    bump();
 });
 
 // client.on('message', (message) => {
