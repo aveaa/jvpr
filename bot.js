@@ -111,7 +111,7 @@ function print_r(theObj){
 //     });
 // }
 function bump() {
-	message.channels.get('427795113562079232').send('!bump');
+	client.channels.get('427795113562079232').send('!bump');
 }
 
 client.on('message', (message) => {
@@ -132,6 +132,7 @@ client.on('message', (message) => {
 	}
 	if (match2 !== null) {
 		let ms = parseInt(match2[1]) * 3600000 + parseInt(match2[2]) * 60000 + parseInt(match2[3]) * 1000 + 5000;
+		console.log(ms);
 		setTimeout(bump, ms);
 	}
 })
