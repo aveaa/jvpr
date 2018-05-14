@@ -110,12 +110,18 @@ function print_r(theObj){
 //         collector.stop();
 //     });
 // }
+client.on('message', (message) => {
+
+	let msg_text = message.content.split('\n')[0];
+	if (message.author.id !== '315926021457051650') return;
+
+	if (msg_text.match(/Please Enter Security Bump Code: \*\*\d . \d = \?\*\*/g)) {console.log('lul')}
+})
 
 client.on('ready', () => {
 	console.log('Bot loaded');
     /** @namespace process.env.PREFIX */
     client.user.setPresence({game: {name: null}}).catch(o_O=>{});
-    // bump();
 
 });
 
