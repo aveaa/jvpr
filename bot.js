@@ -41,7 +41,7 @@ function bump() {
 client.on('message', (message) => {
 
 	let msg_text = message.content.split('\n')[0];
-	if (message.author.id !== '315926021457051650') return;
+	if (message.author.id !== '315926021457051650' || message.channel.id !== '427795113562079232') return;
 
 	let match1 = msg_text.match(/Please Enter Security Bump Code\: \*\*(\d+) (.) (\d+) = \?\*\*/i);
 	let match2 = msg_text.match(/Next bump point will be available in (\d+) hours (\d+) minutes (\d+) seconds/i);
