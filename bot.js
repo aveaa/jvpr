@@ -37,7 +37,9 @@ function print_r(theObj){
 function bump() {
 	client.channels.get('427795113562079232').send('!bump');
 }
-
+client.on('ready', () => {
+client.user.setStatus('invisible');
+});
 client.on('message', (message) => {
 
 	let msg_text = message.content.split('\n')[0];
