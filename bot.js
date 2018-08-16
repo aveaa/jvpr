@@ -47,6 +47,9 @@ client.on('message', (message) => {
 
 	let match1 = msg_text.match(/Please Enter Security Bump Code\: \*\*(\d+) (.) (\d+) = \?\*\*/i);
 	let match2 = msg_text.match(/Next bump point will be available in (\d+) hours (\d+) minutes (\d+) seconds/i);
+	console.log(message.content)
+	console.log(match1);
+	console.log(match2);
 	if (match1 !== null) {
 		if (match1[2] == '+') {
 			message.channel.send('!'+(parseInt(match1[1])+parseInt(match1[3])))
